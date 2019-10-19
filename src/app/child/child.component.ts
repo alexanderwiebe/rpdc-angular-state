@@ -13,12 +13,15 @@ export class ChildComponent implements OnInit {
   currentValue = '';
   constructor(private letterService: LetterService) {}
 
-  ngOnInit() {}
-
-  update() {
-    this.currentValue = this.letterService.getCurrentValue();
+  ngOnInit() {
+    this.letterService.currentValue$.subscribe(val => {
+      if (val !== this.currentValue) {
+        this.currentValue = val;
+      }
+    });
   }
+
   push() {
-    this.letterService.setCurrentValue(this.currentValue);
+    this.letterService.currentValue$.next(this.currentValue);
   }
 }

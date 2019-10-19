@@ -3,9 +3,7 @@
     parent works!
   </p>
   <label>Current Value: </label>
-  <input [(ngModel)]="parentValue" type="string">
-  <button (click)="update()">update</button>
-  <button (click)="push()">push</button>
+  <input [(ngModel)]="parentValue" type="string" (blur)="push()">
   <app-child name="foo"></app-child>
   <app-child name="bar"></app-child>
   <app-child name="buzz"></app-child>
