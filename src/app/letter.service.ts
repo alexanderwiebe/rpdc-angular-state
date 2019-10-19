@@ -1,17 +1,10 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root' // single shared instance throughout app
 })
 export class LetterService {
-  currentValue: string;
+  public currentValue$ = new BehaviorSubject('');
   constructor() {}
-
-  setCurrentValue(newCurrentValue: string) {
-    this.currentValue = newCurrentValue;
-  }
-
-  getCurrentValue(): string {
-    return this.currentValue;
-  }
 }

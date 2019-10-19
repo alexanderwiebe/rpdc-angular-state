@@ -3,7 +3,5 @@
     {{ name }} works!
   </p>
   <label>Current Value: </label>
-  <input [(ngModel)]="currentValue">
-  <button (click)="update()">update</button>
-  <button (click)="push()">push</button>
+  <input [(ngModel)]="currentValue" (blur)="push()">
 </div>
