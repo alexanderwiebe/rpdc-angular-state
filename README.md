@@ -18,6 +18,6 @@ The branches are divided as follows:
 
 In this example there are two components, a parent and child. The goal of the exercise is as follows
 
-- The parent sets a number, passese it to the child.
-- The child then increments the number displaying it.
+- The parent sets a number, passese it to the child. done!
+- The child then increments the number displaying it. done!
 - The child then passes that update number back to the parent

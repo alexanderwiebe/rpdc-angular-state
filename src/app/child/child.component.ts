@@ -1,4 +1,12 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  Input,
+  OnChanges,
+  SimpleChange,
+  SimpleChanges
+} from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -6,11 +14,19 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./child.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class ChildComponent implements OnInit {
+export class ChildComponent implements OnInit, OnChanges {
+  @Input() parentStartValue: number;
+
   currentValue = 0;
   constructor() {}
 
   ngOnInit() {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.parentStartValue && this.parentStartValue) {
+      this.currentValue = this.parentStartValue;
+    }
+  }
 
   inc() {
     this.currentValue += 1;
