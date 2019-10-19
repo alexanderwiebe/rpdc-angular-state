@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { LetterService } from '../letter.service';
 
 @Component({
   selector: 'app-child',
@@ -10,10 +11,14 @@ export class ChildComponent implements OnInit {
   @Input() name: string;
 
   currentValue = '';
-  constructor() {}
+  constructor(private letterService: LetterService) {}
 
   ngOnInit() {}
 
-  update() {}
-  push() {}
+  update() {
+    this.currentValue = this.letterService.getCurrentValue();
+  }
+  push() {
+    this.letterService.setCurrentValue(this.currentValue);
+  }
 }
