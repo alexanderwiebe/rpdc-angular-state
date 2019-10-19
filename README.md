@@ -5,7 +5,7 @@ this repo is broken into different branches that exemplifiy the different types 
 The branches are divided as follows:
 
 | State | Before | After |
-| Single Component | single-component-before | single-component-after |
+| Single Component | single-component | cant get worse |
 | Parent - Child | pc-before | pr-after |
 | Services | services-before | services-after |
 | Container - Presenter | single-component-before | single-component-after |
