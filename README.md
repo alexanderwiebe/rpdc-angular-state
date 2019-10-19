@@ -13,3 +13,11 @@ The branches are divided as follows:
 | ngrx                  | ngrx                    | hahah lol              |
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-eu3tlx)
+
+## parent - child relationship
+
+In this example there are two components, a parent and child. The goal of the exercise is as follows
+
+- The parent sets a number, passese it to the child.
+- The child then increments the number displaying it.
+- The child then passes that update number back to the parent
