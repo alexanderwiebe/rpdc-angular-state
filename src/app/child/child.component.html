@@ -1,8 +1,9 @@
 <div class="box">
   <p>
-    child works!
+    {{ name }} works!
   </p>
-  <button (click)="inc()">increment</button>
-  <button (click)="dec()">decrement</button>
-  <label>Current Value: {{ currentValue }}</label>
+  <label>Current Value: </label>
+  <input [(ngModel)]="currentValue">
+  <button (click)="update()">update</button>
+  <button (click)="push()">push</button>
 </div>
