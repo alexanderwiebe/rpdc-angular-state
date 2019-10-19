@@ -14,10 +14,8 @@ The branches are divided as follows:
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-eu3tlx)
 
-## parent - child relationship
+## Services
 
-In this example there are two components, a parent and child. The goal of the exercise is as follows
+In this example there are many child components that all need to communicate with eachotehr and the parent. Children components would consider each other 'siblings'.
 
-- The parent sets a number, passese it to the child.
-- The child then increments the number displaying it.
-- The child then passes that update number back to the parent
+In this exercise the goal is if any (parent or child) component updates the 'current' value, it gets updated throughout.

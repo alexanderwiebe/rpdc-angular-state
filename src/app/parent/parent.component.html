@@ -2,9 +2,12 @@
   <p>
     parent works!
   </p>
-  <label>Start Value: </label>
-  <input [(ngModel)]="startValue" type="number">
   <label>Current Value: </label>
-  <input [(ngModel)]="parentValue" type="number">
-  <app-child></app-child>
+  <input [(ngModel)]="parentValue" type="string">
+  <button (click)="update()">update</button>
+  <button (click)="push()">push</button>
+  <app-child name="foo"></app-child>
+  <app-child name="bar"></app-child>
+  <app-child name="buzz"></app-child>
+  <app-child name="pickle"></app-child>
 </div>

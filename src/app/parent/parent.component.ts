@@ -10,10 +10,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   }
 })
 export class ParentComponent implements OnInit {
-  startValue = 0;
-  parentValue = 0;
+  parentValue = '';
 
   constructor() {}
 
   ngOnInit() {}
+
+  update() {}
+  push() {}
 }
