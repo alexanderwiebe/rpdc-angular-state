@@ -1,0 +1,11 @@
+<div class="box">
+  <p>
+    parent works!
+  </p>
+  <label>Current Value: </label>
+  <input [ngModel]="stream" type="string" (focusout)="push($event?.target?.value)">
+  <app-child name="foo"></app-child>
+  <app-child name="bar"></app-child>
+  <app-child name="buzz"></app-child>
+  <app-child name="pickle"></app-child>
+</div>
