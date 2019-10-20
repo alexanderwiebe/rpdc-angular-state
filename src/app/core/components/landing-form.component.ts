@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ViewEncapsulation,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { Unit } from '../models/units.model';
 import { FormBuilder } from '@angular/forms';
 
@@ -7,19 +14,22 @@ import { FormBuilder } from '@angular/forms';
   template: `
     <h1>Landing Page</h1>
     <ul>
-      <li *ngFor="let unit of units">{{ unit.name }}</li>
+      <li *ngFor="let unit of rootUnits">
+        {{ unit.name }} aka: "{{ unit.abbreviation }}", id = {{ unit.id }}
+      </li>
+      <form [formGroup]="form">
+        <label>unit name: </label>
+        <input formControlName="name" />
+        <label>unit abbreviation: </label>
+        <input formControlName="abbreviation" />
+        <label>unit id: </label>
+        <input formControlName="id" />
+        <button (click)="addUnit()">add</button>
+      </form>
     </ul>
-    <ul>
-      <li *ngFor="let unit of rootUnits">{{ unit.name }}</li>
-    </ul>
-    <form [formGroup]="form">
-      <label>unit name: </label>
-      <input formControlName="name" />
-      <label>unit initial: </label>
-      <input formControlName="initial" />
-      <button (click)="addUnit()">add</button>
-    </form>
-  `
+  `,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandingFormComponent {
   @Input() units: Unit[];
@@ -28,12 +38,14 @@ export class LandingFormComponent {
 
   form = this.fb.group({
     name: [''],
-    initial: ['']
+    abbreviation: [''],
+    id: ['']
   });
 
   constructor(private fb: FormBuilder) {}
 
   addUnit() {
     this.createUnit.emit(this.form.value);
+    this.form.reset();
   }
 }

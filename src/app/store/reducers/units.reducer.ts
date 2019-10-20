@@ -1,21 +1,19 @@
 import { UnitsActions, UnitsActionTypes } from '../actions';
 import { Unit } from '../../core/models/units.model';
-import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
-export interface UnitsState {
-  entities: Unit[];
+export const adapter: EntityAdapter<Unit> = createEntityAdapter<Unit>({
+  selectId: (unit: Unit) => unit.id
+});
+
+export interface UnitsState extends EntityState<Unit> {
   loaded: boolean;
   loading: boolean;
 }
 
-export const initialState: UnitsState = {
-  entities: [],
+export const initialState: UnitsState = adapter.getInitialState({
   loaded: false,
   loading: false
-};
-
-export const adapter: EntityAdapter<Unit> = createEntityAdapter<Unit>({
-  selectId: (unit: Unit) => unit.id
 });
 
 export function reducer(
@@ -31,14 +29,7 @@ export function reducer(
     }
 
     case UnitsActionTypes.LoadUnitsSuccess: {
-      const entities = action.payload;
-
-      return {
-        ...state,
-        loading: false,
-        loaded: true,
-        entities
-      };
+      return adapter.upsertMany(action.payload, { ...state });
     }
 
     case UnitsActionTypes.LoadUnitsFail: {
@@ -48,6 +39,18 @@ export function reducer(
         loaded: false
       };
     }
+
+    case UnitsActionTypes.CreateUnitsSuccess: {
+      return adapter.addOne(
+        {
+          ...action.payload
+        },
+        {
+          ...state
+        }
+      );
+    }
+
     default:
       return state;
   }

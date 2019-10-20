@@ -1,10 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Unit } from '../models/units.model';
 import { LoadUnits, CreateUnits } from '../../store/actions';
-import { getUnits } from '../../store/selectors/units.selector';
+import { getUnits, getAllUnit } from '../../store/selectors/units.selector';
 
 @Component({
   selector: 'landing',
@@ -14,7 +19,9 @@ import { getUnits } from '../../store/selectors/units.selector';
       [rootUnits]="rootUnits$ | async"
       (createUnit)="onCreate($event)"
     ></landing-form>
-  `
+  `,
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandingComponent implements OnInit {
   units$: Observable<Unit[]>;
@@ -24,7 +31,7 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new LoadUnits());
-    this.rootUnits$ = this.store.pipe(select(getUnits));
+    this.rootUnits$ = this.store.pipe(select(getAllUnit));
   }
 
   onCreate(newUnit) {

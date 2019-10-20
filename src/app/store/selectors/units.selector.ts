@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { UnitsState } from '../reducers/units.reducer';
+import { UnitsState, adapter } from '../reducers/units.reducer';
 import { AppState } from '../reducers';
 
 export const getUnitsState = createFeatureSelector<UnitsState>('units');
