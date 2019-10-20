@@ -20,4 +20,4 @@ In this example there are two components, a parent and child. The goal of the ex
 
 - The parent sets a number, passese it to the child. done!
 - The child then increments the number displaying it. done!
-- The child then passes that update number back to the parent
+- The child then passes that update number back to the parent. done!

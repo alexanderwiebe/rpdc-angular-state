@@ -16,4 +16,8 @@ export class ParentComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  onCurrentValueUpdate(newValue: number) {
+    this.parentValue = newValue;
+  }
 }

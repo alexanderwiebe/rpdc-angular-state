@@ -4,8 +4,9 @@ import {
   ViewEncapsulation,
   Input,
   OnChanges,
-  SimpleChange,
-  SimpleChanges
+  SimpleChanges,
+  Output,
+  EventEmitter
 } from '@angular/core';
 
 @Component({
@@ -16,6 +17,7 @@ import {
 })
 export class ChildComponent implements OnInit, OnChanges {
   @Input() parentStartValue: number;
+  @Output() updateCurrentValue = new EventEmitter<number>();
 
   currentValue = 0;
   constructor() {}
@@ -30,9 +32,11 @@ export class ChildComponent implements OnInit, OnChanges {
 
   inc() {
     this.currentValue += 1;
+    this.updateCurrentValue.emit(this.currentValue);
   }
 
   dec() {
     this.currentValue -= 1;
+    this.updateCurrentValue.emit(this.currentValue);
   }
 }
