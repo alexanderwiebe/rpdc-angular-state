@@ -1,0 +1,7 @@
+<div class="box">
+  <p>
+    {{ name }} works!
+  </p>
+  <label>Current Value: </label>
+  <input [ngModel]="stream" type="string" (focusout)="push($event?.target?.value)">
+</div>
