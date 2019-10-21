@@ -16,7 +16,6 @@ import { getUnits, getAllUnit } from '../../store/selectors/units.selector';
   template: `
     <landing-form
       [units]="units$ | async"
-      [rootUnits]="rootUnits$ | async"
       (createUnit)="onCreate($event)"
     ></landing-form>
   `,
@@ -25,13 +24,12 @@ import { getUnits, getAllUnit } from '../../store/selectors/units.selector';
 })
 export class LandingComponent implements OnInit {
   units$: Observable<Unit[]>;
-  rootUnits$: Observable<Unit[]>;
 
   constructor(private store: Store<any>) {}
 
   ngOnInit() {
     this.store.dispatch(new LoadUnits());
-    this.rootUnits$ = this.store.pipe(select(getAllUnit));
+    this.units$ = this.store.pipe(select(getAllUnit));
   }
 
   onCreate(newUnit) {

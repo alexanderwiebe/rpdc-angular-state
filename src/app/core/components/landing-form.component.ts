@@ -14,7 +14,7 @@ import { FormBuilder } from '@angular/forms';
   template: `
     <h1>Landing Page</h1>
     <ul>
-      <li *ngFor="let unit of rootUnits">
+      <li *ngFor="let unit of units">
         {{ unit.name }} aka: "{{ unit.abbreviation }}", id = {{ unit.id }}
       </li>
       <form [formGroup]="form">
@@ -33,7 +33,6 @@ import { FormBuilder } from '@angular/forms';
 })
 export class LandingFormComponent {
   @Input() units: Unit[];
-  @Input() rootUnits: Unit[];
   @Output() createUnit = new EventEmitter<any>();
 
   form = this.fb.group({

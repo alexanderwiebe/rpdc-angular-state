@@ -1,20 +1,15 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StoreModule } from '@ngrx/store';
+import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { reducers } from './store/reducers';
-import { effects } from './store/effects';
-
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
-import { LandingComponent, NotLandingComponent } from './core/containers';
-import {
-  LandingFormComponent,
-  NotLandingFormComponent
-} from './core/components';
+import { LandingFormComponent } from './core/components';
+import { LandingComponent } from './core/containers';
+import { effects } from './store/effects';
+import { reducers } from './store/reducers';
 
 @NgModule({
   imports: [
@@ -26,13 +21,7 @@ import {
     StoreDevtoolsModule.instrument(),
     AppRoutingModule
   ],
-  declarations: [
-    AppComponent,
-    LandingComponent,
-    NotLandingComponent,
-    LandingFormComponent,
-    NotLandingFormComponent
-  ],
+  declarations: [AppComponent, LandingComponent, LandingFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
