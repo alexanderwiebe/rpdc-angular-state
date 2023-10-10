@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { LetterService } from '../letter.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class ChildComponent implements OnInit {
   constructor(private letterService: LetterService) {}
 
   ngOnInit() {
-    this.letterService.currentValue$.subscribe(val => {
+    this.letterService.currentValue$.subscribe((val) => {
       if (val !== this.currentValue) {
         this.currentValue = val;
       }
@@ -22,6 +22,6 @@ export class ChildComponent implements OnInit {
   }
 
   push() {
-    this.letterService.currentValue$.next(this.currentValue);
+    this.letterService.setCurrentValue(this.currentValue);
   }
 }

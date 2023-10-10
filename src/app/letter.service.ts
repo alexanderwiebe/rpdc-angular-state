@@ -5,6 +5,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root' // single shared instance throughout app
 })
 export class LetterService {
-  public currentValue$ = new BehaviorSubject('');
+  private _currentValue$ = new BehaviorSubject('');
+  public currentValue$ = this._currentValue$.asObservable();
   constructor() {}
+
+  setCurrentValue(input: string) {
+    this._currentValue$.next(input);
+  }
 }
